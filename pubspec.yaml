@@ -1,0 +1,21 @@
+name: pro_player
+description: Professional video player with IPTV support
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  media_kit: ^1.1.11
+  media_kit_video: ^1.2.5
+  media_kit_libs_video: ^1.0.5
+  file_picker: ^8.0.0
+  shared_preferences: ^2.2.3
+  http: ^1.2.1
+  url_launcher: ^6.2.5
+
+flutter:
+  uses-material-design: true
