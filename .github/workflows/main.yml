@@ -29,6 +29,19 @@ jobs:
           M=android/app/src/main/AndroidManifest.xml
           sed -i 's#<application#<uses-permission android:name="android.permission.INTERNET"/>\n    <application android:usesCleartextTraffic="true"#' $M
 
+      - name: Force compileSdk 36 for all plugins
+        run: |
+          mkdir -p ~/.gradle/init.d
+          cat > ~/.gradle/init.d/compilesdk.gradle << 'EOF'
+          allprojects {
+            afterEvaluate { p ->
+              if (p.hasProperty('android')) {
+                p.android.compileSdkVersion 36
+              }
+            }
+          }
+          EOF
+
       - run: flutter pub get
       - run: flutter build apk --release --split-per-abi
 
